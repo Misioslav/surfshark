@@ -17,6 +17,7 @@ docker run \
 	  --env=USER=USER \
 	  --env=PASS=PASS \
 	  --env=LOCATION=LOCATION \ #might be left empty in that case will take first 64 servers it finds otherwise will try to locate files for location
+	  -p 1194:1194/udp \
 	  misioslav/surfshark:latest
 ```
 ## Docker Compose
@@ -38,6 +39,8 @@ surfshark:
     - NET_ADMIN
   devices:
     - /dev/net/tun
+  ports:
+    - 1194:1194/udp
   environment:
    - USER=${USER}
    - PASS=${PASS}

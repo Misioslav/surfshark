@@ -18,5 +18,6 @@ RUN apt-get update && apt-get install -y \
 
 HEALTHCHECK --interval=90s --timeout=10s --start-period=30s CMD curl -L 'https://ipinfo.io'
 
+EXPOSE 1194/udp
 
 ENTRYPOINT ["/bin/bash","/ovpn/start.sh"]
