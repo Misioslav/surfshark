@@ -4,6 +4,7 @@ FROM debian:buster-slim
 ENV USER USER
 ENV PASS PASS
 ENV LOCATION LOCATION
+ENV MODE MODE
 
 COPY ovpn/ /ovpn/
 
@@ -11,7 +12,6 @@ RUN apt-get update && apt-get install -y \
     unzip wget openvpn curl \
     && wget -q https://account.surfshark.com/api/v1/server/configurations -O /ovpn/configurations \
     && unzip /ovpn/configurations -d /ovpn/ovpn-servers/ \
-    && find /ovpn/ovpn-servers/ -name '*_tcp.ovpn' -delete \
     && rm /ovpn/configurations \
     && rm -rf /var/lib/apt/lists/* \
     && apt-get purge -y --autoremove wget unzip
